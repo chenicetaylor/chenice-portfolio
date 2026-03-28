@@ -132,7 +132,9 @@ function IdeationLightbox({ src, alt, origin, onClose }) {
 // ─── VoiceBuddy page ──────────────────────────────────────────────────────────
 export default function VoiceBuddy() {
   useScrollReveal()
-  const [lightbox, setLightbox] = useState(null) // { src, alt, origin }
+  const [lightbox, setLightbox] = useState(null)
+
+  useEffect(() => { window.scrollTo(0, 0) }, []) // { src, alt, origin }
 
   const openLightbox = (e, src, alt) => {
     const rect = e.currentTarget.getBoundingClientRect()
