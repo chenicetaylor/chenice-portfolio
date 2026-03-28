@@ -54,6 +54,7 @@ function PaintCanvas() {
 
     const onTouchStart = (e) => {
       if (!document.body.classList.contains('palette-active')) return
+      if (e.target.closest('.hero-palette-wrap')) return
       e.preventDefault()
       const t = e.touches[0]
       painting = true
