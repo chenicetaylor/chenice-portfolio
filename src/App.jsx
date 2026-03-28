@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import './App.css'
+import { NavBar, Footer, imgLogo, imgGroup, imgPaper } from './shared.jsx'
 
 // ─── Paint canvas ─────────────────────────────────────────────────────────────
 function PaintCanvas() {
@@ -50,9 +52,32 @@ function PaintCanvas() {
 
     const onUp = () => { painting = false }
 
+    const onTouchStart = (e) => {
+      if (!document.body.classList.contains('palette-active')) return
+      e.preventDefault()
+      const t = e.touches[0]
+      painting = true
+      strokeColor = paletteColors[Math.floor(Math.random() * paletteColors.length)]
+      lastX = t.clientX; lastY = t.clientY
+      stamp(lastX, lastY)
+    }
+
+    const onTouchMove = (e) => {
+      if (!painting) return
+      e.preventDefault()
+      const t = e.touches[0]
+      drawLine(lastX, lastY, t.clientX, t.clientY)
+      lastX = t.clientX; lastY = t.clientY
+    }
+
+    const onTouchEnd = () => { painting = false }
+
     document.addEventListener('mousedown', onDown)
     document.addEventListener('mousemove', onMove)
     document.addEventListener('mouseup', onUp)
+    document.addEventListener('touchstart', onTouchStart, { passive: false })
+    document.addEventListener('touchmove', onTouchMove, { passive: false })
+    document.addEventListener('touchend', onTouchEnd)
 
     // Clear canvas when paint mode exits (after fade-out transition)
     const observer = new MutationObserver(() => {
@@ -67,6 +92,9 @@ function PaintCanvas() {
       document.removeEventListener('mousedown', onDown)
       document.removeEventListener('mousemove', onMove)
       document.removeEventListener('mouseup', onUp)
+      document.removeEventListener('touchstart', onTouchStart)
+      document.removeEventListener('touchmove', onTouchMove)
+      document.removeEventListener('touchend', onTouchEnd)
       observer.disconnect()
     }
   }, [])
@@ -116,7 +144,15 @@ function CustomCursor() {
       cursor.querySelector('.cursor-label').textContent = ''
     }
 
+    const onTouchMove = (e) => {
+      if (!document.body.classList.contains('palette-active')) return
+      const t = e.touches[0]
+      cursor.style.left = t.clientX + 'px'
+      cursor.style.top  = t.clientY + 'px'
+    }
+
     document.addEventListener('mousemove', onMove)
+    document.addEventListener('touchmove', onTouchMove, { passive: true })
 
     const pillCursorEls = document.querySelectorAll('[data-cursor-label]')
     pillCursorEls.forEach(el => {
@@ -132,6 +168,7 @@ function CustomCursor() {
 
     return () => {
       document.removeEventListener('mousemove', onMove)
+      document.removeEventListener('touchmove', onTouchMove)
       pillCursorEls.forEach(el => {
         el.removeEventListener('mouseenter', onEnterPillCursor)
         el.removeEventListener('mouseleave', onLeavePillCursor)
@@ -152,10 +189,7 @@ function CustomCursor() {
 }
 
 // ─── Figma assets ────────────────────────────────────────────────────────────
-const imgLogo           = 'https://www.figma.com/api/mcp/asset/2af1ebbe-8d99-4598-94ef-4589fd7eb84c'
 const imgLine2          = 'https://www.figma.com/api/mcp/asset/ec2c8760-7e04-40a7-836b-1b533581fb4b'
-const imgGroup          = 'https://www.figma.com/api/mcp/asset/12e10611-fb70-4339-87f5-69587cb0766e'
-const imgPaper          = 'https://www.figma.com/api/mcp/asset/33ceeb3c-5554-41b3-96fe-12d56056bbdc'
 const imgRectangle4     = 'https://www.figma.com/api/mcp/asset/65c3de9a-2663-4116-82a4-c65d1d7f95b8'
 const imgRectangle5     = 'https://www.figma.com/api/mcp/asset/abbdb667-5c33-48d8-95fa-27e1024d8230'
 const imgRectangle6     = 'https://www.figma.com/api/mcp/asset/676179e8-3bf7-4b5a-9b2d-e38f95207075'
@@ -187,6 +221,7 @@ const projects = [
     context:     'AmazonNEXT x CodePath',
     date:        'Spring 2025',
     cursorLabel: 'Click me!',
+    link:        '/voice-buddy',
   },
   {
     image:      imgRectangle7,
@@ -199,32 +234,10 @@ const projects = [
 ]
 
 // ─── Components ───────────────────────────────────────────────────────────────
-function NavBar() {
-  return (
-    <nav className="navbar">
-      {/* Mobile: logo left + hamburger right */}
-      <img src={imgLogo} alt="Chenice Taylor" className="navbar-logo mobile-only" />
-      <button className="navbar-menu mobile-only" aria-label="Open menu">
-        <img src={imgGroup} alt="" />
-      </button>
 
-      {/* Tablet: left pills | centered logo | right pills */}
-      <div className="nav-pills tablet-only">
-        <a href="#work" className="nav-pill">Work</a>
-        <a href="#studio" className="nav-pill">Studio</a>
-      </div>
-      <img src={imgLogo} alt="Chenice Taylor" className="navbar-logo tablet-only" />
-      <div className="nav-pills tablet-only">
-        <a href="#about" className="nav-pill">About</a>
-        <a href="#resume" className="nav-pill">Resume</a>
-      </div>
-    </nav>
-  )
-}
-
-function ProjectCard({ image, name, tag, context, date, comingSoon, cursorLabel }) {
+function ProjectCard({ image, name, tag, context, date, comingSoon, cursorLabel, link }) {
   const contextLines = Array.isArray(context) ? context : [context]
-  return (
+  const card = (
     <article className="project-card">
       <div className="project-image-wrap" {...(cursorLabel ? { 'data-cursor-label': cursorLabel } : {})}>
         <img src={image} alt={name} />
@@ -246,46 +259,27 @@ function ProjectCard({ image, name, tag, context, date, comingSoon, cursorLabel 
       </div>
     </article>
   )
+  return link ? <Link to={link} className="project-card-link">{card}</Link> : card
 }
 
-function Footer() {
-  return (
-    <footer className="footer">
-      <div className="footer-logo-wrap">
-        <img src={imgLogo} alt="Chenice Taylor" />
-      </div>
 
-      <div className="footer-divider" />
+// ─── Card reveal on scroll ────────────────────────────────────────────────────
+function useCardReveal() {
+  useEffect(() => {
+    const cards = document.querySelectorAll('.project-card')
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible')
+        } else {
+          entry.target.classList.remove('is-visible')
+        }
+      })
+    }, { threshold: 0.4 })
 
-      <div className="footer-nav">
-        <div className="footer-nav-col">
-          <p>Back to Top</p>
-          <p>&nbsp;</p>
-          <p>Work</p>
-          <p>&nbsp;</p>
-          <p>Studio</p>
-          <p>&nbsp;</p>
-          <p>About</p>
-        </div>
-        <div className="footer-nav-col">
-          <p>Resume</p>
-          <p>&nbsp;</p>
-          <p>Email</p>
-          <p>&nbsp;</p>
-          <p>LinkedIn</p>
-          <p>&nbsp;</p>
-          <p>GitHub</p>
-        </div>
-      </div>
-
-      <div className="footer-quote">
-        <p>Let all you do be done with love.</p>
-        <p>1 Corinthians 16:14</p>
-        <p>&nbsp;</p>
-        <p>© 2026. Created with love by Chenice Taylor ♡</p>
-      </div>
-    </footer>
-  )
+    cards.forEach(card => observer.observe(card))
+    return () => observer.disconnect()
+  }, [])
 }
 
 // ─── Spring scroll ────────────────────────────────────────────────────────────
@@ -323,9 +317,30 @@ function useSpringScroll() {
   }, [])
 }
 
+// ─── Palette attention nudge ──────────────────────────────────────────────────
+function usePaletteAttention() {
+  useEffect(() => {
+    const trigger = () => {
+      if (document.body.classList.contains('palette-active')) return
+      const wrap = document.querySelector('.hero-palette-wrap')
+      if (!wrap) return
+      wrap.classList.remove('is-attention')
+      void wrap.offsetWidth
+      wrap.classList.add('is-attention')
+      setTimeout(() => wrap.classList.remove('is-attention'), 700)
+    }
+
+    const timeout = setTimeout(trigger, 2500)
+    const interval = setInterval(trigger, 7000)
+    return () => { clearTimeout(timeout); clearInterval(interval) }
+  }, [])
+}
+
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function App() {
   useSpringScroll()
+  useCardReveal()
+  usePaletteAttention()
 
   return (
     <div className="portfolio">

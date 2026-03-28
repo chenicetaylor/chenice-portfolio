@@ -1,0 +1,469 @@
+/* ─── About Page ─────────────────────────────────────────────────────────────── */
+
+/* ─── Font helpers ───────────────────────────────────────────────────────────── */
+.font-pixelscript {
+  font-family: "pf-pixelscript", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.font-argent-lc {
+  font-family: "argent-pixel-cf", sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  text-transform: lowercase;
+}
+
+/* ─── Rainbow letter wave ─────────────────────────────────────────────────────── */
+@keyframes letter-pop {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+    color: inherit;
+  }
+  3% {
+    transform: scale(1.5) translateY(-6px);
+    color: hsl(var(--hue), 90%, 45%);
+  }
+  6% {
+    transform: scale(1) translateY(0);
+    color: inherit;
+  }
+}
+
+.rainbow-letter {
+  display: inline-block;
+  animation: letter-pop 7s ease-in-out infinite;
+  transition: color 0.2s ease;
+}
+
+.about-created-pill-wrap:hover .rainbow-letter {
+  animation: none;
+  color: hsl(var(--hue), 90%, 45%);
+}
+
+/* ─── Page wrapper ───────────────────────────────────────────────────────────── */
+.about-page {
+  background-color: #fffaf1;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100svh;
+}
+
+.about-paper-bg {
+  position: fixed;
+  inset: 0;
+  background-repeat: repeat;
+  background-size: 158px 158px;
+  background-position: top left;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Hero / Header ──────────────────────────────────────────────────────────── */
+.about-header {
+  position: relative;
+  z-index: 1;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 96px 20px 40px;
+}
+
+.about-header-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.about-photo-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 1;
+  border-radius: 25px;
+  border: 1px solid #000;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.about-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.about-photo-active {
+  opacity: 1;
+}
+
+.about-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.about-greeting {
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: #000;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.about-greeting .font-pixelscript {
+  font-size: 40px;
+}
+
+.about-greeting .font-argent-lc {
+  font-size: 40px;
+}
+
+.about-created {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+}
+
+.about-created-text {
+  line-height: 1.2;
+}
+
+.about-created-pill-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.about-created-tooltip {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 14px;
+  padding: 16px;
+  width: 200px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 10;
+}
+
+.about-created-pill-wrap:hover .about-created-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.about-created-tooltip-name {
+  font-family: 'Geist', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #000;
+  margin: 0 0 4px;
+}
+
+.about-created-tooltip-desc {
+  font-family: 'Geist', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: #000;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.about-created-pill {
+  background: transparent;
+  font-family: 'Geist', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  padding: 2px 10px;
+  line-height: 1.3;
+  direction: rtl;
+}
+
+/* ─── Content sections ───────────────────────────────────────────────────────── */
+.about-sections {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  align-items: center;
+  padding: 80px 20px;
+  text-align: center;
+  color: #000;
+}
+
+.about-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  max-width: 358px;
+}
+
+.about-section-title {
+  font-size: 36px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0;
+  font-weight: 400;
+  color: #000;
+  width: 100%;
+  text-align: left;
+}
+
+.about-section-title .font-pixelscript {
+  font-size: 36px;
+}
+
+.about-section-title .font-argent-lc {
+  font-size: 36px;
+}
+
+.about-section-body {
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: #000;
+  margin: 0;
+  text-align: left;
+}
+
+/* ─── Tablet (768px+) ────────────────────────────────────────────────────────── */
+@media (min-width: 768px) {
+  /* Header: photo stays centered above text (column), but scales up */
+  .about-header {
+    padding: 96px 32px 60px;
+  }
+
+  .about-header-inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    max-width: min(704px, calc(100% - 64px));
+  }
+
+  .about-photo-wrap {
+    width: min(380px, calc(100% - 64px));
+    max-width: 380px;
+    flex-shrink: 0;
+  }
+
+  .about-intro {
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-greeting {
+    font-size: 39px;
+  }
+
+  .about-greeting .font-pixelscript,
+  .about-greeting .font-argent-lc {
+    font-size: 52px;
+  }
+
+  .about-created {
+    justify-content: center;
+    font-size: 26px;
+  }
+
+  .about-created-pill {
+    font-size: 26px;
+  }
+
+  /* Sections: title left, body right */
+  .about-sections {
+    padding: 72px 32px;
+    gap: 56px;
+  }
+
+  .about-section {
+    max-width: min(704px, calc(100% - 64px));
+    flex-direction: row;
+    gap: 36px;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .about-section-title {
+    width: auto;
+    min-width: 120px;
+    flex-shrink: 0;
+    font-size: 32px;
+    text-align: left;
+  }
+
+  .about-section-title .font-pixelscript,
+  .about-section-title .font-argent-lc {
+    font-size: 32px;
+  }
+
+  .about-section-body {
+    font-size: 16px;
+    flex: 1;
+    min-width: 0;
+    line-height: 1.6;
+  }
+}
+
+/* ─── Laptop (1024px+) ───────────────────────────────────────────────────────── */
+@media (min-width: 1024px) {
+  .about-page {
+    cursor: none;
+  }
+
+  .about-header {
+    padding: 0 80px 80px;
+    margin-top: -80px;
+    justify-content: center;
+  }
+
+  .about-header-inner {
+    flex-direction: row;
+    align-items: center;
+    gap: 64px;
+    max-width: min(1280px, calc(100% - 160px));
+  }
+
+  .about-photo-wrap {
+    order: 2;
+    width: 380px;
+    max-width: 380px;
+    flex-shrink: 0;
+  }
+
+  .about-intro {
+    order: 1;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .about-created {
+    justify-content: flex-start;
+    font-size: 26px;
+  }
+
+  .about-created-pill {
+    font-size: 26px;
+  }
+
+  .about-greeting {
+    font-size: 44px;
+  }
+
+  .about-greeting .font-pixelscript,
+  .about-greeting .font-argent-lc {
+    font-size: 58px;
+  }
+
+  .about-sections {
+    padding: 0 80px 80px;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .about-section {
+    max-width: min(1280px, calc(100% - 160px));
+    gap: 48px;
+  }
+
+  .about-section-title {
+    min-width: 160px;
+    font-size: 36px;
+  }
+
+  .about-section-title .font-pixelscript,
+  .about-section-title .font-argent-lc {
+    font-size: 36px;
+  }
+
+  .about-section-body {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+}
+
+/* ─── Desktop (1440px+) ──────────────────────────────────────────────────────── */
+@media (min-width: 1440px) {
+  .about-header {
+    padding: 0 100px 100px;
+    margin-top: -80px;
+  }
+
+  .about-header-inner {
+    max-width: min(1600px, calc(100% - 200px));
+    gap: 80px;
+  }
+
+  .about-photo-wrap {
+    width: 440px;
+    max-width: 440px;
+  }
+
+  .about-greeting {
+    font-size: 52px;
+  }
+
+  .about-greeting .font-pixelscript,
+  .about-greeting .font-argent-lc {
+    font-size: 68px;
+  }
+
+  .about-created {
+    font-size: 30px;
+  }
+
+  .about-created-pill {
+    font-size: 30px;
+  }
+
+  .about-sections {
+    padding: 0 100px 100px;
+    gap: 64px;
+  }
+
+  .about-section {
+    max-width: min(1600px, calc(100% - 200px));
+    gap: 56px;
+  }
+
+  .about-section-title {
+    min-width: 180px;
+    font-size: 40px;
+  }
+
+  .about-section-title .font-pixelscript,
+  .about-section-title .font-argent-lc {
+    font-size: 40px;
+  }
+
+  .about-section-body {
+    font-size: 17px;
+    line-height: 1.65;
+  }
+}

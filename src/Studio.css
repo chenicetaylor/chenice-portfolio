@@ -1,0 +1,346 @@
+/* ─── Studio Page ─────────────────────────────────────────────────────────── */
+
+/* ─── Font helpers ───────────────────────────────────────────────────────── */
+.font-pixelscript {
+  font-family: "pf-pixelscript", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.font-argent-lc {
+  font-family: "argent-pixel-cf", sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  text-transform: lowercase;
+}
+
+/* ─── Page wrapper ───────────────────────────────────────────────────────── */
+.studio-page {
+  background-color: #fffaf1;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100svh;
+}
+
+.studio-paper-bg {
+  position: fixed;
+  inset: 0;
+  background-repeat: repeat;
+  background-size: 158px 158px;
+  background-position: top left;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Hero / Header ──────────────────────────────────────────────────────── */
+.studio-header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 96px 20px 48px;
+}
+
+.studio-header-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.studio-hero-photo-wrap {
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 1;
+  border-radius: 25px;
+  border: 1px solid #000;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.studio-hero-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.studio-hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.studio-title {
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: #000;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.studio-title .font-pixelscript {
+  font-size: 36px;
+}
+
+.studio-title .font-argent-lc {
+  font-size: 36px;
+}
+
+.studio-desc {
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #000;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.studio-link {
+  color: #000;
+  text-decoration: underline;
+}
+
+/* ─── Gallery Grid ───────────────────────────────────────────────────────── */
+.studio-grid-wrap {
+  position: relative;
+  z-index: 1;
+  padding: 16px 16px 80px;
+}
+
+.studio-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.studio-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ─── Card ───────────────────────────────────────────────────────────────── */
+.studio-card {
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 25px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.studio-card-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.studio-card-title {
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #000;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.studio-card-desc {
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #000;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.studio-card-desc a {
+  color: #000;
+  text-decoration: underline;
+}
+
+/* ─── Tablet (768px+) ────────────────────────────────────────────────────── */
+@media (min-width: 768px) {
+  .studio-header {
+    padding: 96px 32px 60px;
+  }
+
+  .studio-header-inner {
+    max-width: min(704px, calc(100% - 64px));
+  }
+
+  .studio-hero-photo-wrap {
+    max-width: 380px;
+    width: min(380px, calc(100% - 64px));
+  }
+
+  .studio-title {
+    font-size: 34px;
+  }
+
+  .studio-title .font-pixelscript,
+  .studio-title .font-argent-lc {
+    font-size: 44px;
+  }
+
+  .studio-desc {
+    font-size: 20px;
+  }
+
+  .studio-grid-wrap {
+    padding: 24px 32px 80px;
+  }
+
+  .studio-grid {
+    flex-direction: row;
+    gap: 24px;
+    max-width: min(704px, calc(100% - 64px));
+    align-items: flex-start;
+  }
+
+  .studio-col {
+    flex: 1;
+    min-width: 0;
+    gap: 24px;
+  }
+
+  .studio-card-title {
+    font-size: 20px;
+  }
+
+  .studio-card-desc {
+    font-size: 15px;
+  }
+}
+
+/* ─── Laptop (1024px+) ───────────────────────────────────────────────────── */
+@media (min-width: 1024px) {
+  .studio-page {
+    cursor: none;
+  }
+
+  .studio-header {
+    padding: 0 80px 80px;
+    margin-top: -80px;
+    min-height: 100svh;
+  }
+
+  .studio-header-inner {
+    flex-direction: row;
+    align-items: center;
+    gap: 64px;
+    max-width: min(1200px, calc(100% - 160px));
+  }
+
+  .studio-hero-photo-wrap {
+    order: 2;
+    width: 380px;
+    max-width: 380px;
+    flex-shrink: 0;
+  }
+
+  .studio-hero-text {
+    order: 1;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .studio-title {
+    font-size: 40px;
+  }
+
+  .studio-title .font-pixelscript,
+  .studio-title .font-argent-lc {
+    font-size: 54px;
+  }
+
+  .studio-desc {
+    font-size: 18px;
+  }
+
+  .studio-grid-wrap {
+    padding: 0 80px 80px;
+  }
+
+  .studio-grid {
+    flex-direction: row;
+    gap: 32px;
+    max-width: min(1200px, calc(100% - 160px));
+    align-items: flex-start;
+  }
+
+  .studio-col {
+    gap: 32px;
+  }
+
+  .studio-card-title {
+    font-size: 22px;
+  }
+
+  .studio-card-desc {
+    font-size: 16px;
+  }
+}
+
+/* ─── Desktop (1440px+) ──────────────────────────────────────────────────── */
+@media (min-width: 1440px) {
+  .studio-header {
+    padding: 0 100px 100px;
+    margin-top: -80px;
+  }
+
+  .studio-header-inner {
+    max-width: min(1600px, calc(100% - 200px));
+    gap: 80px;
+  }
+
+  .studio-hero-photo-wrap {
+    width: 440px;
+    max-width: 440px;
+  }
+
+  .studio-title {
+    font-size: 48px;
+  }
+
+  .studio-title .font-pixelscript,
+  .studio-title .font-argent-lc {
+    font-size: 62px;
+  }
+
+  .studio-desc {
+    font-size: 20px;
+  }
+
+  .studio-grid-wrap {
+    padding: 0 100px 100px;
+  }
+
+  .studio-grid {
+    gap: 40px;
+    max-width: min(1600px, calc(100% - 200px));
+  }
+
+  .studio-col {
+    gap: 40px;
+  }
+
+  .studio-card-title {
+    font-size: 24px;
+  }
+
+  .studio-card-desc {
+    font-size: 17px;
+  }
+}
