@@ -389,12 +389,19 @@ export default function App() {
 
           <div className="hero-palette-wrap" onClick={(e) => {
             const wrap = e.currentTarget
+            const activating = !wrap.classList.contains('is-active')
             wrap.classList.toggle('is-active')
-            document.body.classList.toggle('palette-active')
             wrap.classList.remove('is-sparkling')
-            void wrap.offsetWidth // force reflow to restart animation
+            void wrap.offsetWidth
             wrap.classList.add('is-sparkling')
             setTimeout(() => wrap.classList.remove('is-sparkling'), 500)
+            if (activating) {
+              const scrollDelay = window.scrollY > 10 ? 600 : 0
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+              setTimeout(() => document.body.classList.add('palette-active'), scrollDelay)
+            } else {
+              document.body.classList.remove('palette-active')
+            }
           }}>
             <img src="/palette.png" alt="" className="hero-palette" aria-hidden="true" />
             {[...Array(7)].map((_, i) => <span key={i} className={`sparkle sparkle-${i + 1}`} />)}
