@@ -2,10 +2,10 @@ import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 // ─── Shared assets ────────────────────────────────────────────────────────────
-export const imgLogo  = 'https://www.figma.com/api/mcp/asset/2af1ebbe-8d99-4598-94ef-4589fd7eb84c'
-export const imgGroup = 'https://www.figma.com/api/mcp/asset/12e10611-fb70-4339-87f5-69587cb0766e'
-export const imgClose = 'https://www.figma.com/api/mcp/asset/b58e7a64-b524-43e1-9aef-c592a0a25d92'
-export const imgPaper = 'https://www.figma.com/api/mcp/asset/33ceeb3c-5554-41b3-96fe-12d56056bbdc'
+export const imgLogo  = '/logo.png'
+export const imgGroup = '/mingcute_menu-line.png'
+export const imgClose = '/mingcute_x.png'
+export const imgPaper = '/Paper.png'
 
 // ─── NavBar ───────────────────────────────────────────────────────────────────
 export function NavBar() {

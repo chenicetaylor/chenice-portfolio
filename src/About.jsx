@@ -3,7 +3,7 @@ import './About.css'
 import { NavBar, Footer, CustomCursor, imgPaper } from './shared.jsx'
 
 const headshots = [
-  'https://www.figma.com/api/mcp/asset/bc3d14b0-39f3-4db1-b844-253724206ca3',
+  '/aboutheadshot.jpeg',
   '/headshot-2.png',
   '/headshot-3.png',
 ]

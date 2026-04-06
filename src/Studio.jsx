@@ -1,11 +1,11 @@
 import './Studio.css'
 import { NavBar, Footer, CustomCursor, imgPaper } from './shared.jsx'
 
-const imgHero = 'https://www.figma.com/api/mcp/asset/1427ac35-6536-405d-a7df-7f7733b6ca07'
+const imgHero = '/studioheadshot.jpeg'
 
 const artworks = [
   {
-    img: 'https://www.figma.com/api/mcp/asset/588fd224-9034-44e5-9343-4e21996bda4f',
+    img: '/studio-images/dwell.png',
     title: 'Dwell',
     desc: (
       <>
@@ -21,12 +21,12 @@ const artworks = [
     ),
   },
   {
-    img: 'https://www.figma.com/api/mcp/asset/7618eb1b-d3da-4570-be0e-59e506161979',
+    img: '/studio-images/newcreation.png',
     title: 'New Creation',
     desc: 'spontaneous butterfly doodle',
   },
   {
-    img: 'https://www.figma.com/api/mcp/asset/611cf7dd-916d-4bc7-9b39-a4a6a2d3c449',
+    img: '/studio-images/shephardsstaff.jpeg',
     title: "The Shepherd's Staff",
     desc: (
       <>
@@ -42,27 +42,27 @@ const artworks = [
     ),
   },
   {
-    img: 'https://www.figma.com/api/mcp/asset/cb6e69cd-c3ad-4c7e-a453-494b64c49275',
+    img: '/studio-images/ruach.png',
     title: 'Ruach HaKodesh',
     desc: 'contrasting and complementary colors experiment',
   },
   {
-    img: 'https://www.figma.com/api/mcp/asset/1f2bb2dd-2a3a-4b0b-9974-46d699d05c2c',
+    img: '/studio-images/muchfruit.png',
     title: 'Much Fruit',
     desc: 'little oil pastel doodle',
   },
   {
-    img: 'https://www.figma.com/api/mcp/asset/db40b5cc-9277-4171-806f-a3b3e1f727c6',
+    img: '/studio-images/heart.png',
     title: 'Christ, The Strength of my Heart',
     desc: 'oil pastel experiment',
   },
   {
-    img: 'https://www.figma.com/api/mcp/asset/44e84065-34f9-44b5-b143-8e5fd3aa8c8b',
+    img: '/studio-images/angelsascending.png',
     title: 'Angels Ascending',
     desc: "design thinking project using Heck's Pictorial Archive of Nature & Science",
   },
   {
-    img: 'https://www.figma.com/api/mcp/asset/b6350c79-69a6-4b90-b7c7-8eef8a98cf2e',
+    img: '/studio-images/lamb.png',
     title: 'Little Lamb',
     desc: 'cutesy doodle',
   },

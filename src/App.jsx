@@ -190,11 +190,11 @@ function CustomCursor() {
 }
 
 // ─── Figma assets ────────────────────────────────────────────────────────────
-const imgLine2          = 'https://www.figma.com/api/mcp/asset/ec2c8760-7e04-40a7-836b-1b533581fb4b'
-const imgRectangle4     = 'https://www.figma.com/api/mcp/asset/65c3de9a-2663-4116-82a4-c65d1d7f95b8'
-const imgRectangle5     = 'https://www.figma.com/api/mcp/asset/abbdb667-5c33-48d8-95fa-27e1024d8230'
-const imgRectangle6     = 'https://www.figma.com/api/mcp/asset/676179e8-3bf7-4b5a-9b2d-e38f95207075'
-const imgRectangle7     = 'https://www.figma.com/api/mcp/asset/cdd99653-ccc2-4cbd-87c9-8946bc2774d2'
+const imgLine2          = '/Line 2.png'
+const imgRectangle4     = '/tempocover.png'
+const imgRectangle5     = '/echoboxcover.png'
+const imgRectangle6     = '/voicebudycover.png'
+const imgRectangle7     = '/thescrollcover.png'
 const imgHeaderBg       = '/header-bg.png'
 
 // ─── Project data ─────────────────────────────────────────────────────────────
