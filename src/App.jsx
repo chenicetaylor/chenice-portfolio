@@ -200,6 +200,15 @@ const imgHeaderBg       = '/header-bg.png'
 // ─── Project data ─────────────────────────────────────────────────────────────
 const projects = [
   {
+    image:       imgRectangle6,
+    name:        'Voice Buddy',
+    tag:         'UXD',
+    context:     'AmazonNEXT x CodePath',
+    date:        'Spring 2025',
+    cursorLabel: 'Click me!',
+    link:        '/voice-buddy',
+  },
+  {
     image:      imgRectangle4,
     name:       'Tempo',
     tag:        'UXD',
@@ -214,15 +223,6 @@ const projects = [
     context:    'Rice University Designathon',
     date:       'Winter 2026',
     comingSoon: 'Case study coming soon',
-  },
-  {
-    image:       imgRectangle6,
-    name:        'Voice Buddy',
-    tag:         'UXD',
-    context:     'AmazonNEXT x CodePath',
-    date:        'Spring 2025',
-    cursorLabel: 'Click me!',
-    link:        '/voice-buddy',
   },
   {
     image:      imgRectangle7,

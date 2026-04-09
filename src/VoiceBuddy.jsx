@@ -177,9 +177,9 @@ export default function VoiceBuddy() {
         </p>
       </header>
 
-      <div className="vb-hero-img-wrap vb-reveal" data-cursor-label="View Image" onClick={(e) => openLightbox(e, 'https://www.figma.com/api/mcp/asset/676179e8-3bf7-4b5a-9b2d-e38f95207075', 'Voice Buddy final mockup')}>
+      <div className="vb-hero-img-wrap vb-reveal" data-cursor-label="View Image" onClick={(e) => openLightbox(e, '/voicebudycover.png', 'Voice Buddy final mockup')}>
         <img
-          src="https://www.figma.com/api/mcp/asset/676179e8-3bf7-4b5a-9b2d-e38f95207075"
+          src="/voicebudycover.png"
           alt="Voice Buddy final mockup"
           className="vb-full-img"
         />
